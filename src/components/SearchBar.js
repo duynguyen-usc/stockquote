@@ -3,7 +3,7 @@ import React from 'react';
 export default class SearchBar extends React.Component {
     constructor(props){
         super(props);
-
+        
         this.state = {
             ticker: ''
         };
@@ -15,10 +15,14 @@ export default class SearchBar extends React.Component {
         });
     }
 
+    onFormSubmit = (e) => {
+        e.preventDefault();
+    }
+
     render () {
         return (
             <div className="search-bar ui segment">
-                <form className="ui form">
+                <form className="ui form" onSubmit={this.onFormSubmit}>
                     <div className="field">
                         <label>Enter stock ticker</label>
                         <input 
