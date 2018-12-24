@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/quote-detail.css';
+import '../css/app.css';
 
 const QuoteDetail = ({quote}) => {
     if(!quote) {
