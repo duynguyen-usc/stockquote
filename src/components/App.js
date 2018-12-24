@@ -1,28 +1,29 @@
 import React from 'react';
 import SearchBar from './SearchBar';
-import alphavantage from '../apis/alphavantage';
+import QuoteDetail from './QuoteDetail';
+import iextrading from '../apis/iextrading';
 
 export default class App extends React.Component {
 
-    getQuote = async () => {
-        const quote = await alphavantage.get('query', {
-            params: { 
-                symbol: "SPX"
-            }
-        });
-        
-        console.log(quote);
-    }
+    state = {
+        quote: ""
+    };
 
-    componentDidMount() {
-        this.getQuote()
+    getQuote = async (ticker) => {
+        const ret = await iextrading.get(`/${ticker}/ohlc`);
+        
+        this.setState({
+            quote: ret.data.close.price
+        });
+
+        console.log(this.state.quote);
     }
 
     render() {
         return (
             <div className="ui container">
-                <SearchBar/>
-                <div></div>
+                <SearchBar onFormSubmit={this.getQuote} />
+                <QuoteDetail />
             </div>
         );
     }
