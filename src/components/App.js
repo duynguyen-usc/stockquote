@@ -10,20 +10,19 @@ export default class App extends React.Component {
     };
 
     getQuote = async (ticker) => {
-        const ret = await iextrading.get(`/${ticker}/ohlc`);
+        const ret = await iextrading.get(`/${ticker}/book`);
         
         this.setState({
-            quote: ret.data.close.price
+            quote: ret.data.quote
         });
-
-        console.log(this.state.quote);
+       
     }
 
     render() {
         return (
             <div className="ui container">
                 <SearchBar onFormSubmit={this.getQuote} />
-                <QuoteDetail />
+                <QuoteDetail quote={this.state.quote} />
             </div>
         );
     }
