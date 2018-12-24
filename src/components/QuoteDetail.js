@@ -5,7 +5,6 @@ const QuoteDetail = ({quote}) => {
     if(!quote) {
         return (<div></div>);
     }
-    console.log(quote);
 
     const percentChange = (quote.changePercent * 100).toFixed(2);
     return ( 
