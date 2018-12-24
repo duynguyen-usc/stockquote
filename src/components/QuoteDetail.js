@@ -1,14 +1,27 @@
 import React from 'react';
+import '../css/quote-detail.css';
 
 const QuoteDetail = ({quote}) => {
     if(!quote) {
         return (<div></div>);
     }
     console.log(quote);
+
+    const percentChange = (quote.changePercent * 100).toFixed(2);
     return ( 
-        <div>
-            <h1>{quote.companyName}</h1>
-            <h3>{quote.symbol} {quote.close}</h3>
+        <div className="ui grid">
+            <div className="ui row">
+                <div className="company-name">
+                    {quote.companyName} 
+                </div>
+                <div className="quote">
+                    {quote.symbol} {quote.close}
+                </div>
+                <div className="price-change">
+                    {quote.change} ({percentChange}%)
+                </div>
+            </div>
+            
         </div>
     );
 
