@@ -1,7 +1,6 @@
 import React from 'react';
 import SearchBar from './SearchBar';
 import QuoteDetail from './QuoteDetail';
-import Chart from './Chart';
 import iextrading from '../apis/iextrading';
 
 export default class App extends React.Component {
