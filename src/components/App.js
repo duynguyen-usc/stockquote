@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBar from './SearchBar';
 import QuoteDetail from './QuoteDetail';
+import Chart from './Chart';
 import iextrading from '../apis/iextrading';
 
 export default class App extends React.Component {
@@ -10,12 +11,13 @@ export default class App extends React.Component {
     };
 
     getQuote = async (ticker) => {
-        const ret = await iextrading.get(`/${ticker}/book`);
+        const book = await iextrading.get(`/${ticker}/book`);
+        const chart = await iextrading.get(`/${ticker}/chart/3m`)
         
         this.setState({
-            quote: ret.data.quote
+            quote: book.data.quote,
+            priceData: chart.data.map(x => x.close)
         });
-       
     }
 
     render() {
