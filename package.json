@@ -1,7 +1,7 @@
 {
   "name": "stockquote",
   "version": "0.1.0",
-  "homepage": "https://duynguyen-usc.github.io/stockquote/.",
+  "homepage": "http://duynguyen-usc.github.io/stockquote/.",
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
